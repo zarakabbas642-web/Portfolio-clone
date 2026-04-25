@@ -19,15 +19,9 @@ navLinks.forEach((link) => {
 
 window.addEventListener("scroll", () => {
   let current = "";
-
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 140; 
-    const sectionHeight = section.offsetHeight;
-
-    if (
-      window.scrollY >= sectionTop &&
-      window.scrollY < sectionTop + sectionHeight
-    ) {
+    const sectionTop = section.offsetTop - 120;
+    if (window.scrollY >= sectionTop) {
       current = section.getAttribute("id");
     }
   });
@@ -40,22 +34,21 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// Typing effect (safe check)
 const roles = ["Web Developer", "Freelancer", "UI Designer"];
 const typedText = document.getElementById("typedText");
-
 let roleIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
 function typeEffect() {
-  if (!typedText) return;
+  if (!typedText) {
+    return;
+  }
 
   const currentRole = roles[roleIndex];
-
   if (!deleting) {
     typedText.textContent = currentRole.slice(0, charIndex + 1);
-    charIndex++;
+    charIndex += 1;
     if (charIndex === currentRole.length) {
       deleting = true;
       setTimeout(typeEffect, 1200);
@@ -63,14 +56,29 @@ function typeEffect() {
     }
   } else {
     typedText.textContent = currentRole.slice(0, charIndex - 1);
-    charIndex--;
+    charIndex -= 1;
     if (charIndex === 0) {
       deleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
     }
   }
-
   setTimeout(typeEffect, deleting ? 55 : 100);
 }
 
 typeEffect();
+
+const contactForm = document.getElementById("contactForm");
+const contactSubmitBtn = document.getElementById("contactSubmitBtn");
+
+if (contactForm && contactSubmitBtn) {
+  contactForm.addEventListener("submit", (event) => {
+    if (!contactForm.checkValidity()) {
+      event.preventDefault();
+      contactForm.reportValidity();
+      return;
+    }
+
+    contactSubmitBtn.disabled = true;
+    contactSubmitBtn.textContent = "Sending...";
+  });
+}

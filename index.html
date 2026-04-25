@@ -123,7 +123,7 @@
         <div class="timeline">
           <div class="timeline-item">
             <h3>Frontend Web Developer</h3>
-            <span>2024 - 2026</span>
+            <span>2023 - Present</span>
             <p>
               Building scalable frontends, design systems, and high-conversion
               landing pages.
@@ -139,7 +139,7 @@
           </div>
           <div class="timeline-item">
             <h3>BS Computer Science</h3>
-            <span>2024 - 2028 </span>
+            <span>2024 - 2028 (in progress 4th semester)</span>
             <p>
               Specialized in software engineering, web technologies, and
               human-centered design.
@@ -214,11 +214,25 @@
 
       <section class="section content" id="contact">
         <h2>Contact</h2>
-        <form class="contact-form">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" rows="5" required></textarea>
-          <button type="submit">Send Message</button>
+        <form
+          class="contact-form"
+          id="contactForm"
+          method="POST"
+          action="https://formsubmit.co/zarakabbas642@gmail.com"
+        >
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
+          <input type="hidden" name="_next" value="index.html#contact" />
+
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit" id="contactSubmitBtn">Send Message</button>
         </form>
       </section>
     </main>
@@ -226,4 +240,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
